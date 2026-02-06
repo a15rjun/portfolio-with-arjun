@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { GraduationCap, Briefcase, Target } from "lucide-react";
+import arjunImg from "@/assets/arjun-about.jpg";
 
 const aboutCards = [
   {
@@ -38,7 +39,26 @@ const AboutSection = () => {
           <h2 className="text-3xl sm:text-4xl font-bold">About Me</h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-3 gap-12 items-center">
+          {/* Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center"
+          >
+            <div className="relative">
+              <div className="absolute -inset-3 gradient-bg rounded-2xl opacity-20 blur-xl" />
+              <img
+                src={arjunImg}
+                alt="Arjun AM"
+                className="relative w-64 h-80 object-cover object-top rounded-2xl border-2 border-primary/20"
+              />
+            </div>
+          </motion.div>
+
+          {/* Text */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
