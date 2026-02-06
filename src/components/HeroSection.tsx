@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Search, Megaphone, BarChart3 } from "lucide-react";
-import profileImg from "@/assets/profile-arjun.png";
 
 const highlights = [
   { icon: Search, label: "SEO" },
@@ -18,11 +17,10 @@ const HeroSection = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
+        <div className="max-w-3xl mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <motion.p
@@ -47,7 +45,7 @@ const HeroSection = () => {
               Helping businesses grow online through organic & paid marketing strategies. Passionate about turning clicks into customers.
             </p>
 
-            <div className="flex flex-wrap gap-4 mb-10">
+            <div className="flex flex-wrap justify-center gap-4 mb-10">
               <a
                 href="#contact"
                 className="gradient-bg px-7 py-3 rounded-lg font-semibold text-primary-foreground hover:opacity-90 transition-opacity flex items-center gap-2"
@@ -63,7 +61,7 @@ const HeroSection = () => {
             </div>
 
             {/* Quick Highlights */}
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap justify-center gap-4">
               {highlights.map((item, i) => (
                 <motion.div
                   key={item.label}
@@ -79,42 +77,6 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Profile Image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative flex justify-center"
-          >
-            <div className="relative">
-              {/* Glow ring */}
-              <div className="absolute -inset-4 gradient-bg rounded-full opacity-20 blur-2xl animate-pulse-glow" />
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/30">
-                <img
-                  src={profileImg}
-                  alt="Arjun AM - Digital Marketing Executive"
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
-
-              {/* Floating badge */}
-              <motion.div
-                animate={{ y: [0, -12, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -right-4 top-8 glass-card px-4 py-2 rounded-lg"
-              >
-                <span className="text-xs font-semibold gradient-text">BCA Graduate</span>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -left-4 bottom-16 glass-card px-4 py-2 rounded-lg"
-              >
-                <span className="text-xs font-semibold gradient-text">2+ Months Experience</span>
-              </motion.div>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
