@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
-import { ArrowRight, Search, Megaphone, BarChart3, ChevronDown, Sparkles, TrendingUp, Users, Target } from "lucide-react";
+import { ArrowRight, Search, Megaphone, BarChart3, ChevronDown, Sparkles } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 
 const highlights = [
@@ -8,11 +8,7 @@ const highlights = [
   { icon: Megaphone, label: "Meta Ads", desc: "Social Ads" },
 ];
 
-const stats = [
-  { icon: TrendingUp, value: "150%", label: "Avg. ROI Boost" },
-  { icon: Users, value: "50+", label: "Clients Served" },
-  { icon: Target, value: "1M+", label: "Impressions" },
-];
+
 
 const roles = ["SEO Specialist", "Google Ads Expert", "Meta Ads Strategist", "Growth Marketer"];
 
@@ -74,52 +70,7 @@ function useTypingEffect(words: string[], typingSpeed = 80, deletingSpeed = 50, 
   return displayText;
 }
 
-function AnimatedCounter({ value, label, icon: Icon }: { value: string; label: string; icon: React.ElementType }) {
-  const numericPart = value.replace(/[^0-9]/g, "");
-  const suffix = value.replace(/[0-9]/g, "");
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setInView(true); },
-      { threshold: 0.5 },
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!inView) return;
-    const target = parseInt(numericPart);
-    const step = Math.max(1, Math.floor(target / 40));
-    const interval = setInterval(() => {
-      setCount((prev) => {
-        if (prev + step >= target) {
-          clearInterval(interval);
-          return target;
-        }
-        return prev + step;
-      });
-    }, 30);
-    return () => clearInterval(interval);
-  }, [inView, numericPart]);
-
-  return (
-    <div ref={ref} className="text-center">
-      <div className="flex items-center justify-center mb-2">
-        <div className="gradient-bg p-2 rounded-lg">
-          <Icon size={16} className="text-primary-foreground" />
-        </div>
-      </div>
-      <span className="text-2xl sm:text-3xl font-bold gradient-text tabular-nums">
-        {count}{suffix}
-      </span>
-      <p className="text-xs text-muted-foreground mt-1">{label}</p>
-    </div>
-  );
-}
 
 function MouseGlow() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -348,17 +299,7 @@ const HeroSection = () => {
             ))}
           </motion.div>
 
-          {/* Stats row */}
-          <motion.div
-            variants={itemVariants}
-            className="glass-card rounded-2xl px-8 py-6 max-w-lg mx-auto"
-          >
-            <div className="grid grid-cols-3 gap-6 divide-x divide-border">
-              {stats.map((stat) => (
-                <AnimatedCounter key={stat.label} {...stat} />
-              ))}
-            </div>
-          </motion.div>
+
         </motion.div>
       </div>
 
