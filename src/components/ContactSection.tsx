@@ -103,7 +103,7 @@ const ContactSection = () => {
 
             <div className="space-y-4">
               <a
-                href="mailto:arjunam.marketing@gmail.com"
+                href="mailto:arjunmani1518@gmail.com"
                 className="glass-card rounded-xl p-4 flex items-center gap-4 hover:border-primary/30 transition-colors group"
               >
                 <div className="gradient-bg p-2.5 rounded-lg">
@@ -111,12 +111,12 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground">Email</p>
-                  <p className="text-sm font-medium group-hover:text-primary transition-colors">arjunam.marketing@gmail.com</p>
+                  <p className="text-sm font-medium group-hover:text-primary transition-colors">arjunmani1518@gmail.com</p>
                 </div>
               </a>
 
               <a
-                href="tel:+919876543210"
+                href="tel:+919087457178"
                 className="glass-card rounded-xl p-4 flex items-center gap-4 hover:border-primary/30 transition-colors group"
               >
                 <div className="gradient-bg p-2.5 rounded-lg">
@@ -124,12 +124,12 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground">Phone</p>
-                  <p className="text-sm font-medium group-hover:text-primary transition-colors">+91 98765 43210</p>
+                  <p className="text-sm font-medium group-hover:text-primary transition-colors">+91 90874 57178</p>
                 </div>
               </a>
 
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919087457178"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-card rounded-xl p-4 flex items-center gap-4 hover:border-primary/30 transition-colors group"
