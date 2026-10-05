@@ -1,14 +1,17 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search, BarChart3, Megaphone, ArrowUpRight } from "lucide-react";
+import SeoCaseStudy from "./SeoCaseStudy";
 
 const projects = [
   {
     icon: Search,
-    title: "SEO Practice Projects",
+    title: "SEO Keyword Research & Search Volume Analysis",
     description:
-      "Conducted on-page & off-page SEO optimization including keyword research, meta tag optimization, and content structuring for improved search engine rankings.",
-    tools: ["Google Search Console", "Ahrefs", "SEMrush"],
-    outcome: "Improved understanding of ranking factors and organic traffic strategies.",
+      "Conducted keyword research and search volume analysis to identify high-potential SEO keywords and support organic search strategy.",
+    tools: ["SEO", "Keyword Research", "Search Volume", "Search Intent"],
+    outcome: "Identified high-volume, high-relevance keywords prioritized for SEO implementation.",
+    caseStudy: true,
   },
   {
     icon: BarChart3,
@@ -29,6 +32,8 @@ const projects = [
 ];
 
 const ProjectsSection = () => {
+  const [caseStudyOpen, setCaseStudyOpen] = useState(false);
+
   return (
     <section id="projects" className="py-24 relative">
       <div className="absolute inset-0 pointer-events-none">
@@ -55,7 +60,7 @@ const ProjectsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.5 }}
-              className="glass-card rounded-2xl p-6 group hover:border-primary/30 transition-all relative overflow-hidden"
+              className="glass-card rounded-2xl p-6 group hover:border-primary/30 transition-all relative overflow-hidden flex flex-col"
             >
               <div className="absolute top-0 right-0 w-32 h-32 gradient-bg opacity-5 rounded-bl-full" />
 
@@ -77,15 +82,25 @@ const ProjectsSection = () => {
                 ))}
               </div>
 
-              <div className="pt-4 border-t border-border">
-                <p className="text-xs text-primary font-medium">
+              <div className="pt-4 border-t border-border mt-auto">
+                <p className="text-xs text-primary font-medium mb-4">
                   📈 {project.outcome}
                 </p>
+                {project.caseStudy && (
+                  <button
+                    onClick={() => setCaseStudyOpen(true)}
+                    className="w-full gradient-bg text-primary-foreground text-sm font-semibold py-2.5 rounded-lg hover:opacity-90 hover:glow-shadow transition-all flex items-center justify-center gap-2"
+                  >
+                    View Case Study <ArrowUpRight size={16} />
+                  </button>
+                )}
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      <SeoCaseStudy open={caseStudyOpen} onClose={() => setCaseStudyOpen(false)} />
     </section>
   );
 };
