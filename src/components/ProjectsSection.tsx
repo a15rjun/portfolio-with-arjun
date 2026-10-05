@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Search, BarChart3, Megaphone, ArrowUpRight } from "lucide-react";
+import { Search, Link2, BarChart3, Megaphone, ArrowUpRight } from "lucide-react";
 import SeoCaseStudy from "./SeoCaseStudy";
+import BacklinkCaseStudy from "./BacklinkCaseStudy";
 
 const projects = [
   {
@@ -11,7 +12,16 @@ const projects = [
       "Conducted keyword research and search volume analysis to identify high-potential SEO keywords and support organic search strategy.",
     tools: ["SEO", "Keyword Research", "Search Volume", "Search Intent"],
     outcome: "Identified high-volume, high-relevance keywords prioritized for SEO implementation.",
-    caseStudy: true,
+    caseStudy: "seo",
+  },
+  {
+    icon: Link2,
+    title: "Backlink Building & Off-Page SEO Analysis",
+    description:
+      "Researched backlink opportunities and supported off-page SEO activities to strengthen website authority and organic search visibility.",
+    tools: ["SEO", "Off-Page SEO", "Backlink Building", "Link Research"],
+    outcome: "Built hands-on skills in link research, relevance analysis, and backlink tracking.",
+    caseStudy: "backlink",
   },
   {
     icon: BarChart3,
@@ -32,7 +42,7 @@ const projects = [
 ];
 
 const ProjectsSection = () => {
-  const [caseStudyOpen, setCaseStudyOpen] = useState(false);
+  const [openStudy, setOpenStudy] = useState<string | null>(null);
 
   return (
     <section id="projects" className="py-24 relative">
@@ -52,7 +62,7 @@ const ProjectsSection = () => {
           <h2 className="text-3xl sm:text-4xl font-bold">My Work</h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
@@ -88,7 +98,7 @@ const ProjectsSection = () => {
                 </p>
                 {project.caseStudy && (
                   <button
-                    onClick={() => setCaseStudyOpen(true)}
+                    onClick={() => setOpenStudy(project.caseStudy as string)}
                     className="w-full gradient-bg text-primary-foreground text-sm font-semibold py-2.5 rounded-lg hover:opacity-90 hover:glow-shadow transition-all flex items-center justify-center gap-2"
                   >
                     View Case Study <ArrowUpRight size={16} />
@@ -100,7 +110,8 @@ const ProjectsSection = () => {
         </div>
       </div>
 
-      <SeoCaseStudy open={caseStudyOpen} onClose={() => setCaseStudyOpen(false)} />
+      <SeoCaseStudy open={openStudy === "seo"} onClose={() => setOpenStudy(null)} />
+      <BacklinkCaseStudy open={openStudy === "backlink"} onClose={() => setOpenStudy(null)} />
     </section>
   );
 };
